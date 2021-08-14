@@ -1,0 +1,10 @@
+#adzu-seal img {
+    width: 150px;
+    padding: 10px;
+}
+.login-body {
+    padding: 200px;
+}
+.bg-login-color {
+    background-color: blue;
+}

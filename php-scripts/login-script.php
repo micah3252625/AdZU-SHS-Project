@@ -11,19 +11,28 @@
           $user_data = mysqli_fetch_assoc($result);
           if ($user_data['password'] == $password){
             $_SESSION['id'] = $user_data['id'];
-            
+            echo "<script>
+                  Swal.fire(
+                    'Registered Successfully!',
+                    'Welcome! $username',
+                    'success'
+                  ).then(function() {
+                    window.location = './404.html'
+                  });
+                </script>";
            // header("Location: test.php");
             die;
           }else{
-            alert("Incorrect username or password!");
+            echo "<script>
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      text: 'Username or password is incorrect',
+                    })
+                </script>";
           }
         }
-        else{
-          alert("Invalid username or password!");
-        }
       }
-    }else{
-      alert("Please fill out all the fields.");
     }
   }
 ?>

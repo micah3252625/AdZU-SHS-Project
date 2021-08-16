@@ -28,60 +28,74 @@
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <style>
-        #status {
+        #username-status, #email-status {
             padding: 5px 5px 0px 0px;
             display: none;
+            margin-bottom: -10px;
+        }
+        #toggle-pass {
+            text-align: right;
             margin-bottom: -10px;
         }
     </style>
     <script>
         $(document).ready(function(e) {
+            var username_status = $('#username-status');
+            var email_status = $('#email-status');
+            var password_status = $('#password-status');
+            
             $('#username').keyup(function(){
                 let username = $(this).val();
-                let status = $('#username-status');
                 let phpfile = 'php-scripts/validate-username.php';
                 if (username != '') {
                     $.post(phpfile, {checkUser: username}, function(data) {
-                        status.html(data);
-                        status.css("display", "block");
+                        username_status.html(data);
+                        username_status.css("display", "block");
                     });
                 }
-                if (status.css("color", "red")) {
-                    $(':input[type="submit"]').prop('disabled', true);
-                }
                 else {
-                    $(':input[type="submit"]').prop('disabled', false);
+                    $.post(phpfile, {checkUser: username}, function(data) {
+                        username_status.html(data);
+                        username_status.css("display", "none");
+                    });
                 }
             });
             $('#email').keyup(function(){
                 let email = $(this).val();
-                let status = $('#email-status');
                 let phpfile = 'php-scripts/validate-email.php';
                 if (email != '') {
                     $.post(phpfile, {checkEmail: email}, function(data) {
-                        status.html(data);
-                        status.css("display", "block");
+                        email_status.html(data);
+                        email_status.css("display", "block");
                     });
                 }
-                if (status.css("color", "red")) {
-                    $(':input[type="submit"]').prop('disabled', true);
+                else {
+                    $.post(phpfile, {checkEmail: email}, function(data) {
+                        email_status.html(data);
+                        email_status.css("display", "none");
+                    });
+                }
+              
+            });
+            
+            $('#toggle').change(function() {
+                if ($(this).is(':checked')){
+                    $('#password').attr('type', 'text');
+                    $('#toggle-text').text('Hide Password');
                 }
                 else {
-                    $(':input[type="submit"]').prop('disabled', false);
-                }
-            })
-            $('#confirmpassword').keyup(function() {
-                if ($("#password").val() != $("#confirmpassword").val()) {
-                    $("#password-status").html("Password do not match").css("color","red");
-                    $(':input[type="submit"]').prop('disabled', true);
-                }
-                else{
-                    $("#password-status").html("Password matched").css("color","green");
-                    $(':input[type="submit"]').prop('disabled', false);
+                    $('#password').attr('type', 'password');
+                    $('#toggle-text').text('Show Password');
                 }
             });
+           
+           $('#form-submit').submit(function(){
+               console.log('HELLO');
+           });
 
         });
+
+    
     </script>
 </head>
     <body class="bg-gradient-primary">

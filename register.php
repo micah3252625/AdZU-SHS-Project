@@ -39,20 +39,21 @@
                                         placeholder="Email Address">
                                     <span id="email-status"></span>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user" id="password" name="password"
-                                        placeholder="Password" minlength>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="confirmpassword" name="confirmpassword" placeholder="Confirm Password">
-                                        <span id="password-status"></span>
-                                    </div>
-                                </div>
                                 <div class="form-group">
-                                        <select class="form-control custom-select" id="office" name="office" style="border-radius: 10rem; padding: .5rem .3; font-size: 0.8rem;">
-                                            <option selected value="" disabled>Choose...</option>
+                                    <input type="password" class="form-control form-control-user" id="password" name="password"
+                                        placeholder="Password" minlength="8" maxlength="100" required>
+                                    <span id="password-status"></span>
+                                    <div class="form-check container pt-1 auto-width" id="toggle-pass">
+                                        <input class="form-check-input" type="checkbox" value="" id="toggle" value='0'>
+                                        <label class="form-check-label" for="flexCheckDefault" id="toggle-text">
+                                            Show Password
+                                        </label>
+                                        </div>
+                                    </div>
+                            
+                                <div class="form-group">
+                                        <select class="form-control custom-select" id="office" name="office" style="border-radius: 10rem; padding: .5rem .3; font-size: 0.8rem;" required>
+                                            <option selected value="">Choose...</option>
                                             <option value="Admin">Admin (Principal, AP)</option>
                                             <option value="Admissions">Admissions</option>
                                             <option value="Campus Ministry">Campus Ministry</option>
@@ -64,7 +65,7 @@
                                             <option value="Student Affairs">Student Affairs</option>
                                           </select>
                                 </div>
-                                <input class="btn btn-primary btn-user btn-block" type="submit" name="submit" value="Register Account">
+                                <input id="form-submit" class="btn btn-primary btn-user btn-block" type="submit" name="submit" value="Register Account" disabled>
                             </form>        
                             <?php include 'php-scripts/registration-script.php'; ?>
                             <div class="text-center">

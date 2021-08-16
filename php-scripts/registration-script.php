@@ -8,7 +8,6 @@
         $username = $_POST['username'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $confirm_password = $_POST['confirmpassword'];
         $office = $_POST['office'];
         
         $query = "INSERT INTO users(fname, lname, username, password, email, office) VALUES('$fname','$lname','$username', '$password', '$email', '$office')";

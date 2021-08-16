@@ -17,7 +17,7 @@
                     'Welcome! $username',
                     'success'
                   ).then(function() {
-                    window.location = './404.html'
+                    window.location = './index.php'
                   });
                 </script>";
            // header("Location: test.php");

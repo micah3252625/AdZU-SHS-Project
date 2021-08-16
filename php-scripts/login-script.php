@@ -13,7 +13,7 @@
             $_SESSION['id'] = $user_data['id'];
             echo "<script>
                   Swal.fire(
-                    'Registered Successfully!',
+                    'Login Successfully!',
                     'Welcome! $username',
                     'success'
                   ).then(function() {

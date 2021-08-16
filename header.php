@@ -88,11 +88,6 @@
                     $('#toggle-text').text('Show Password');
                 }
             });
-           
-           $('#form-submit').submit(function(){
-               console.log('HELLO');
-           });
-
         });
 
     
